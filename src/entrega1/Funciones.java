@@ -76,17 +76,67 @@ public class Funciones {
 
 	}
 	
+	public static int testProductorio(int n, int k) {
+        return Funciones.producto(n, k);
+    }
+
+    public static int testSecuenciaGeo(int a1, int r, int k) {
+        return Funciones.secuenciaGeometrica(a1, r, k);
+    }
+
+    public static int testCombinatorio(int n, int k) {
+        return Funciones.combinatorio(n, k);
+    }
+
+    public static double testNumeroS(int n, int k) {
+        return Funciones.numeroS(n, k);
+    }
+
+    public static double testNewton(Function<Double, Double> f, Function<Double, Double> fd, double a, double e) {
+        return Funciones.newton(f, fd, a, e);
+    }
+
+	
 	
 	public static void main(String[] args) {
-		System.out.println(producto(4,2));
-		System.out.println(secuenciaGeometrica(3,5,2));
-		System.out.println(factorial(5));
-		System.out.println(combinatorio(6,3));
-		System.out.println(numeroS(4,2));		
-		Function<Double,Double> f= (x)->2*x*x;
-		Function<Double,Double> fd=(x)->4*x;
+//		System.out.println(producto(4,2));
+//		System.out.println(secuenciaGeometrica(3,5,2));
+//		System.out.println(factorial(5));
+//		System.out.println(combinatorio(6,3));
+//		System.out.println(numeroS(4,2));		
+//		Function<Double,Double> f= (x)->2*x*x;
+//		Function<Double,Double> fd=(x)->4*x;
+//		
+//		System.out.println(newton(f,fd,3.,0.001));
 		
-		System.out.println(newton(f,fd,3.,0.001));
+		System.out.println("___________________________________________");
+        System.out.println("Test 1 \n");
+        int n = 4, k = 2;
+        System.out.println("El resultado de " + n + " y " + k + " es : " + testProductorio(n, k));
+        System.out.println("___________________________________________");
+
+        System.out.println("Test 2 \n");
+        int a1 = 3, r = 5;
+        System.out.println("El producto de la secuencia geométrica con a1 = " + a1 + ", r = " + r + " y k = " + k + " es: " + testSecuenciaGeo(a1, r, k));
+        System.out.println("___________________________________________");
+        
+        System.out.println("Test 3 \n");
+        n = 4; k = 2;
+        System.out.println("El número combinatorio de " + n + " y " + k + " es: " + testCombinatorio(n, k));
+        System.out.println("___________________________________________");
+        
+        System.out.println("Test 4 \n");
+        n = 4; k = 2;
+        System.out.println("El número S(" + n + "," + k + ") es: " + testNumeroS(n, k));
+        System.out.println("___________________________________________");
+        
+        System.out.println("Test Newton \n");
+        Function<Double, Double> f = x -> 2 * Math.pow(x, 2);
+        Function<Double, Double> fd = x -> 4 * x;
+        double a = 3, e = 0.001;
+        
+        System.out.println("Resultado de la función 5 con a= " + a + " y e = " + e + ", f(x) = 2x^2 y fd(x) = 4x: " + testNewton(f, fd, a, e));
+        System.out.println("___________________________________________");
 		
 	}
 	
