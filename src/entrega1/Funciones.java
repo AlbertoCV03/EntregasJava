@@ -1,0 +1,96 @@
+package entrega1;
+
+import java.util.function.Function;
+
+public class Funciones {
+	
+	public static Integer producto(Integer n, Integer k) {
+		assert n>k : String.format("n debe ser mayor que k y es: %d", n);
+		Integer resFinal=1;
+		for(Integer i=0; i<k+1;i++) {
+			resFinal= resFinal* (n-i+1);
+		}
+		return resFinal;
+	}
+	
+	
+	public static Integer secuenciaGeometrica(Integer a1, Integer r,Integer k) {
+		Integer res=1;
+		
+		for (Integer i=2; i<k+1;i++) {
+			
+			Integer an=(int) (a1*(Math.pow(r, (i-1))));
+			res=an*a1;
+			a1=res;
+			
+		}
+		return res;
+	}
+	
+	public static Integer factorial(Integer n) {
+		assert n>0 : "No se puede hacer el factorial de numeros negativos o 0";
+		Integer res=1;
+		for(Integer i=2;i<n+1;i++) {
+			res*=i;
+		}
+		return res;
+	}
+	
+	public static Integer combinatorio(Integer n, Integer k) {
+		assert n>=k : "n debe ser mayor o igual que k";
+		return (factorial(n))/(factorial(k)*(factorial(n-k)));
+	}
+	
+	public static double numeroS(Integer n, Integer k) {
+		assert n>=k : "n debe ser mayor o igual que k";
+		Double resSumatorio=0.;
+		for(Integer i=0;i<k;i++ ) {
+			resSumatorio =resSumatorio+( Math.pow(-1, i) * combinatorio(k+1,i+1)* Math.pow(k-i,n));
+		}
+		return (1./factorial(k))*resSumatorio;
+		
+	}
+	
+//	@FunctionalInterface
+//	interface Funcion {
+//	    double de(double a);
+//	}
+	
+//	public static double newton(Funcion f, Funcion fd, double a, double e) {
+//		double x2=0;
+//		while(Math.abs(f.de(a))>e) {
+//			x2=a-(f.de(a)/fd.de(a));
+//			a=x2;
+//		}
+//		return x2;
+//	}
+	
+	public static double newton(Function<Double,Double> f, Function<Double,Double> fd, double a, double e) {
+		double x2=0;
+		while(Math.abs(f.apply(a))>e) {
+			x2=a-(f.apply(a)/fd.apply(a));
+			a=x2;
+		}
+		return x2;
+	
+
+	}
+	
+	
+	public static void main(String[] args) {
+		System.out.println(producto(4,2));
+		System.out.println(secuenciaGeometrica(3,5,2));
+		System.out.println(factorial(5));
+		System.out.println(combinatorio(6,3));
+		System.out.println(numeroS(4,2));		
+		Function<Double,Double> f= (x)->2*x*x;
+		Function<Double,Double> fd=(x)->4*x;
+		
+		System.out.println(newton(f,fd,3.,0.001));
+		
+	}
+	
+	
+	
+	
+}
