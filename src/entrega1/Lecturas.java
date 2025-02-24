@@ -1,4 +1,6 @@
 package entrega1;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -11,20 +13,37 @@ import java.util.function.Function;
 
 public class Lecturas {
 	
-	public static List<String> lineasDeFichero(String file) {
-		Charset charSet = Charset.defaultCharset();
-		return lineasDeFichero(file, charSet.toString());
-	}
+//	public static List<String> lineasDeFichero(String file) {
+//		Charset charSet = Charset.defaultCharset();
+//		return lineasDeFichero(file, charSet.toString());
+//	}
+//	
+//	
+//	public static List<String> lineasDeFichero(String file, String charSet) {
+//		List<String> lineas = null;
+//		try {		
+//			lineas = Files.readAllLines(Paths.get(file), Charset.forName(charSet));
+//		} catch (IOException e) {
+//			System.out.println(e.toString());
+//		}
+//		return lineas;
+//	}
 	
-	
-	public static List<String> lineasDeFichero(String file, String charSet) {
-		List<String> lineas = null;
-		try {		
-			lineas = Files.readAllLines(Paths.get(file), Charset.forName(charSet));
-		} catch (IOException e) {
-			System.out.println(e.toString());
+	public static List<String> lineasDeFichero(String file){
+		List<String> lectura= new ArrayList<>();
+		
+		try (BufferedReader br= new BufferedReader(new FileReader(file))){
+			
+			String linea;
+			while((linea=br.readLine()) != null) {
+				lectura.add(linea);
+			}
+			
+		}catch(IOException e){
+			e.printStackTrace();
+			
 		}
-		return lineas;
+		return lectura;
 	}
 	
 	public static Integer numeroPalabrasFichero(String file,String sep,String cad) {
