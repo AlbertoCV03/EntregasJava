@@ -58,6 +58,23 @@ public class Lecturas {
 		}
 		return n;
 	}
+		
+	public static Integer numeroPalabrasFichero2(String file,String sep,String cad) {
+		Integer n=0;
+		try (BufferedReader br= new BufferedReader(new FileReader(file))){
+			String linea;
+			while((linea=br.readLine()) != null) {
+				for(String palabra:linea.split(sep)) {
+					if(palabra.toUpperCase().contentEquals(cad.toUpperCase())) {
+					n+=1;
+					}
+				}
+			}
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		return n;
+	}
 	public static List<String> buscarLineasFichero(String file,String cad) {
 		List<String> lns= lineasDeFichero(file);
 		List<String> lineasConPalabra=new ArrayList<>();
@@ -103,8 +120,6 @@ public class Lecturas {
 				n2= n2+1;
 				p+=palabra.strip().length();
 				
-
-				
 			}
 			
 		}
@@ -114,50 +129,34 @@ public class Lecturas {
 	
 	//Tests
 	
-	
-	
-	public static int testNumeroPalabrasFichero(String fichero, String sep, String cad) {
-        return Lecturas.numeroPalabrasFichero(fichero, sep, cad);
-    }
-
-    public static List<String> testBuscarLineasFichero(String fichero, String cad) {
-        return Lecturas.buscarLineasFichero(fichero, cad);
-    }
-
-    public static List<String> testPalabrasUnicas(String fichero) {
-        return Lecturas.palabrasUnicas(fichero);
-    }
-
-    public static Double testLongitudPromedioLineas(String filePath) {
-        return Lecturas.longitudPromedioLineas(filePath);
-    }
-	
 	public static void main(String[] args) {
-//		System.out.println(numeroPalabrasFichero("resources/lin_quijote.txt"," ","quijote"));
+//		System.out.println(numeroPalabrasFichero2("resources/lin_quijote.txt"," ","quijote"));
 //		System.out.println(buscarLineasFichero("resources/lin_quijote.txt","quijote"));
 //		System.out.println(palabrasUnicas("resources/archivo_palabras.txt"));
 //		System.out.println(longitudPromedioLineas("resources/palabras_random.csv"));
 		
 		System.out.println("___________________________________________");
         System.out.println("Test 6 \n");
+        
         String fichero = "resources/lin_quijote.txt";
         String sep = " ";
         String cad = "quijote";
-        System.out.println("El número de veces que aparece la palabra " + cad + " en el fichero resources/lin_quijote.txt es: " + testNumeroPalabrasFichero(fichero, sep, cad));
+        
+        System.out.println("El número de veces que aparece la palabra " + cad + " en el fichero resources/lin_quijote.txt es: " + numeroPalabrasFichero2(fichero, sep, cad));
         System.out.println("___________________________________________");
         
         System.out.println("Test 7 \n");
-        System.out.println("Las líneas en las que aparece la palabra " + cad + " son: " + testBuscarLineasFichero(fichero, cad));
+        System.out.println("Las líneas en las que aparece la palabra " + cad + " son: " + buscarLineasFichero(fichero, cad));
         System.out.println("___________________________________________");
         
         System.out.println("Test 8 \n");
         fichero = "resources/archivo_palabras.txt";
-        System.out.println("Las palabras únicas en el fichero resources/archivo_palabras.txt son: " + testPalabrasUnicas(fichero));
+        System.out.println("Las palabras únicas en el fichero resources/archivo_palabras.txt son: " + palabrasUnicas(fichero));
         System.out.println("___________________________________________");
         
         System.out.println("Test 9 \n");
         String filePath = "resources/palabras_random.csv";
-        System.out.println("La longitud promedio de las líneas del fichero resources/palabras_random.csv es: " + testLongitudPromedioLineas(filePath));
+        System.out.println("La longitud promedio de las líneas del fichero resources/palabras_random.csv es: " + longitudPromedioLineas(filePath));
         System.out.println("___________________________________________");
 	}
 
