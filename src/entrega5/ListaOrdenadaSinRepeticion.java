@@ -3,44 +3,32 @@ package entrega5;
 import java.util.Comparator;
 import java.util.List;
 
-public class ListaOrdenada<E> extends AgregadoLineal<E>{
-	private Comparator<E> comparator;
+public class ListaOrdenadaSinRepeticion<E> extends ListaOrdenada<E> {
 	
-	public ListaOrdenada(Comparator<E> comparator) {
-		super();
-		this.comparator= comparator;
+	private Comparator<E> comparator;
+
+	public ListaOrdenadaSinRepeticion(Comparator<E> comparator) {
+		super(comparator);
+		this.comparator = comparator;
 	}
-	public static <E> ListaOrdenada<E> of(Comparator<E> comparator){
-		return new ListaOrdenada(comparator);
+	public static <E> ListaOrdenadaSinRepeticion<E> of(Comparator<E> comparator){
+		return new ListaOrdenadaSinRepeticion(comparator);
 		
-	}
-	protected int indexOrder(E e) {
-		
-		Integer cont= 0;
-		
-		if (this.elementos.isEmpty()) {
-			return 0;
-		}else {
-			for(E i : this.elementos) {
-				Integer resC= this.comparator.compare(i, e);
-				if(resC>=0) {
-					break;
-				}
-				cont+=1;
-			}
-		}
-		return cont;
 	}
 	
 	@Override
-	public void add(E e) {
-		this.elementos.add(indexOrder(e), e);
+    public void add(E e) {
+		
+		if(!elementos.contains(e)) {
+			this.elementos.add(this.indexOrder(e), e);
+		}
+		
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("----- Prueba de ListaOrdenada -----");
+		System.out.println("----- Prueba de ListaOrdenadaSinRepeticion -----");
 		Comparator<Integer> comparador= Comparator.comparing(x->x);
-		ListaOrdenada<Integer> prueba= ListaOrdenada.of(comparador);
+		ListaOrdenada<Integer> prueba= ListaOrdenadaSinRepeticion.of(comparador);
 		
 		System.out.println("\nAñadiendo elementos");
 		prueba.add(5);
@@ -52,6 +40,10 @@ public class ListaOrdenada<E> extends AgregadoLineal<E>{
 		prueba.add(1);
 		System.out.println(prueba.elements());
 		prueba.add(3);
+		System.out.println(prueba.elements());
+		prueba.add(5);
+		System.out.println(prueba.elements());
+		prueba.add(2);
 		System.out.println(prueba.elements());
 		
 		System.out.println("\nTamaño de la lista");
@@ -65,7 +57,7 @@ public class ListaOrdenada<E> extends AgregadoLineal<E>{
 		
 		System.out.println("\nAñadiendo elementos en lote");
 		
-		prueba.addAll(List.of(4,5,6));
+		prueba.addAll(List.of(4,6,7,4));
 		System.out.println(prueba.elements());
 		
 		System.out.println("\nEliminando todos los elementos");
@@ -76,5 +68,7 @@ public class ListaOrdenada<E> extends AgregadoLineal<E>{
 		System.out.println(prueba.isEmpty());
 
 	}
+
+	
 
 }

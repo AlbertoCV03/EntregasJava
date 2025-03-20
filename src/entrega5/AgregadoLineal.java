@@ -25,12 +25,7 @@ public abstract class AgregadoLineal<E> {
     	return elementos.removeFirst();
     }
     public List<E> removeAll(){
-    	List<E> eliminados= new ArrayList<>();
-    	for(E e : this.elementos) {
-    		System.out.println("1");
-    		eliminados.add(e);
-    		
-    	}
+    	List<E> eliminados= new ArrayList<>(elementos);
     	this.elementos= new ArrayList<>();
     	
     	return eliminados;
