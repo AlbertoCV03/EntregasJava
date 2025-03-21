@@ -67,48 +67,77 @@ public class ColaPrioridad<E, P extends Comparable<P>> extends Cola<PriorityElem
     	}
     	
     }
+    
+    
 	
+
+	@Override
+	public String toString() {
+		return valuesAsList().toString();
+	}
+
 
 	public static void main(String[] args) {
 		System.out.println("----- Prueba de Cola -----");
-		ColaPrioridad<String,Integer> prueba= ColaPrioridad.ofPriority();
+		ColaPrioridad<String,Integer> testColaPrioridad= ColaPrioridad.ofPriority();
 		
-		System.out.println("\nAñadiendo elementos");
-		prueba.add(new PriorityElement("Primero",1));
-		System.out.println(prueba.elements());
-		prueba.add(new PriorityElement("Segundo",2));
-		System.out.println(prueba.elements());
-		prueba.add(new PriorityElement("Tercero",3));
-		System.out.println(prueba.elements());
-		prueba.add(new PriorityElement("Zero",0));
-		System.out.println(prueba.elements());
-		prueba.add(new PriorityElement("Diez",10));
-		System.out.println(prueba.elements());
-		prueba.add(new PriorityElement("Siete",7));
-		System.out.println(prueba.elements());
-		prueba.add(new PriorityElement("Nueve",9));
-		System.out.println(prueba.elements());
+		System.out.println("\nAñadiendo elementos con prioridad");
+		testColaPrioridad.add(new PriorityElement("Crítico",1));
+		System.out.println(testColaPrioridad);
 		
-		prueba.add("Veinte",20);
-		System.out.println(prueba.elements());
-		prueba.add("Quince",15);
-		System.out.println(prueba.elements());
+		testColaPrioridad.add("Normal",3);
+		System.out.println(testColaPrioridad);
 		
-		prueba.decreasePriority("Veinte",19);
-		System.out.println(prueba.elements());
+		testColaPrioridad.add(new PriorityElement("Urgente",2));
+		System.out.println(testColaPrioridad);
 		
-		prueba.removeValue();
-		System.out.println(prueba.elements());
+		testColaPrioridad.add("Bajo",4);
+		System.out.println(testColaPrioridad);
 		
-		prueba.decreasePriority("Veinte",18);
-		System.out.println(prueba.elements());
+		System.out.println("\nElementos con sus prioridades");
+		System.out.println(testColaPrioridad.elements());
 		
-		prueba.add(new PriorityElement("Cuarenta",18));
-		System.out.println(prueba.elements());
+		System.out.println("\nTamaño cola");
+		System.out.println(testColaPrioridad.size());
 		
-		List<String> valoresBloque= List.of("Treinta","Tren","Triangulo");
-		prueba.addAllValues(valoresBloque,13);
-		System.out.println(prueba.elements());
+		System.out.println("\nCambiando la prioridad de 'Normal' de 3 a 1:");
+		testColaPrioridad.decreasePriority("Normal", 1);
+		System.out.println(testColaPrioridad);
+		System.out.println(testColaPrioridad.elements());
+		
+		System.out.println("\nDesencolando elementos por prioridad");
+		System.out.println(testColaPrioridad.remove());
+		
+		System.out.println("\nDesencolando elementos por prioridad");
+		System.out.println(testColaPrioridad.remove());
+		
+		System.out.println("\nDesencolando elementos por prioridad");
+		System.out.println(testColaPrioridad.remove());
+		
+		System.out.println("\nDesencolando elementos por prioridad");
+		System.out.println(testColaPrioridad.remove());
+		
+		System.out.println("\nCola restante");
+		System.out.println(testColaPrioridad);
+		
+		System.out.println("\n¿Está vacía?");
+		System.out.println(testColaPrioridad.isEmpty());
+		
+		try {
+			testColaPrioridad.remove();
+		}catch(Exception e) {
+			System.out.println("\n"+ e);
+		}
+		
+		System.out.println("\nAñadiendo elementos en bloque");
+		testColaPrioridad.addAllValues(List.of("Tarea A", "Tarea B", "Tarea C"),2);
+		System.out.println(testColaPrioridad);
+		
+		System.out.println("\nAñadir Tarea Urgente con prioridad 1");
+		testColaPrioridad.add("Tarea Urgente",1);
+		System.out.println(testColaPrioridad);
+
+
 
 	}
 

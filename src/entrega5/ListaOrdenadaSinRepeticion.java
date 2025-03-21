@@ -28,44 +28,44 @@ public class ListaOrdenadaSinRepeticion<E> extends ListaOrdenada<E> {
 	public static void main(String[] args) {
 		System.out.println("----- Prueba de ListaOrdenadaSinRepeticion -----");
 		Comparator<Integer> comparador= Comparator.comparing(x->x);
-		ListaOrdenada<Integer> prueba= ListaOrdenadaSinRepeticion.of(comparador);
+		ListaOrdenada<Integer> testListaOrdenadaSinRepeticion= ListaOrdenadaSinRepeticion.of(comparador);
 		
 		System.out.println("\nAñadiendo elementos");
-		prueba.add(5);
-		System.out.println(prueba.elements());
-		prueba.add(2);
-		System.out.println(prueba.elements());
-		prueba.add(8);
-		System.out.println(prueba.elements());
-		prueba.add(1);
-		System.out.println(prueba.elements());
-		prueba.add(3);
-		System.out.println(prueba.elements());
-		prueba.add(5);
-		System.out.println(prueba.elements());
-		prueba.add(2);
-		System.out.println(prueba.elements());
+		testListaOrdenadaSinRepeticion.add(5);
+		System.out.println(testListaOrdenadaSinRepeticion);
+		testListaOrdenadaSinRepeticion.add(2);
+		System.out.println(testListaOrdenadaSinRepeticion);
+		testListaOrdenadaSinRepeticion.add(8);
+		System.out.println(testListaOrdenadaSinRepeticion);
+		testListaOrdenadaSinRepeticion.add(1);
+		System.out.println(testListaOrdenadaSinRepeticion);
+		testListaOrdenadaSinRepeticion.add(3);
+		System.out.println(testListaOrdenadaSinRepeticion);
+		testListaOrdenadaSinRepeticion.add(5);
+		System.out.println(testListaOrdenadaSinRepeticion);
+		testListaOrdenadaSinRepeticion.add(2);
+		System.out.println(testListaOrdenadaSinRepeticion);
 		
 		System.out.println("\nTamaño de la lista");
-		System.out.println(prueba.size());
+		System.out.println(testListaOrdenadaSinRepeticion);
 		
 		System.out.println("\nEliminando el primer elemento");
-		System.out.println(prueba.remove());
+		System.out.println(testListaOrdenadaSinRepeticion.remove());
 		
 		System.out.println("\nElementos después de eliminar");
-		System.out.println(prueba.elements());
+		System.out.println(testListaOrdenadaSinRepeticion);
 		
 		System.out.println("\nAñadiendo elementos en lote");
 		
-		prueba.addAll(List.of(4,6,7,4));
-		System.out.println(prueba.elements());
+		testListaOrdenadaSinRepeticion.addAll(List.of(4,6,7,4));
+		System.out.println(testListaOrdenadaSinRepeticion);
 		
 		System.out.println("\nEliminando todos los elementos");
-		List<Integer> b= prueba.removeAll();
+		List<Integer> b= testListaOrdenadaSinRepeticion.removeAll();
 		System.out.println(b);
 		
 		System.out.println("\nEsta vacía?");
-		System.out.println(prueba.isEmpty());
+		System.out.println(testListaOrdenadaSinRepeticion.isEmpty());
 
 	}
 

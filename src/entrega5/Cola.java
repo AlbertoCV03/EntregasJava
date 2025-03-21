@@ -20,40 +20,46 @@ public class Cola<E> extends AgregadoLineal<E> {
     
     public static void main(String[] args) {
 		System.out.println("----- Prueba de Cola -----");
-		Cola<String> prueba= Cola.of();
+		Cola<String> testCola= Cola.of();
 		
 		System.out.println("\nAñadiendo elementos");
-		prueba.add("Primero");
-		System.out.println(prueba.elements());
-		prueba.add("Segundo");
-		System.out.println(prueba.elements());
-		prueba.add("Tercero");
-		System.out.println(prueba.elements());
+		testCola.add("Primero");
+		System.out.println(testCola);
+		testCola.add("Segundo");
+		System.out.println(testCola);
+		testCola.add("Tercero");
+		System.out.println(testCola);
 		
-		System.out.println("\nTamaño de la lista");
-		System.out.println(prueba.size());
-		
-		System.out.println("\nDesencolando elementos");
-		System.out.println(prueba.remove());
-		
-		System.out.println("\nCola restante");
-		System.out.println(prueba.elements());
+		System.out.println("\nTamaño de la cola");
+		System.out.println(testCola.size());
 		
 		System.out.println("\nDesencolando elementos");
-		System.out.println(prueba.remove());
+		System.out.println(testCola.remove());
 		
 		System.out.println("\nCola restante");
-		System.out.println(prueba.elements());
+		System.out.println(testCola);
 		
 		System.out.println("\nDesencolando elementos");
-		System.out.println(prueba.remove());
+		System.out.println(testCola.remove());
 		
 		System.out.println("\nCola restante");
-		System.out.println(prueba.elements());
+		System.out.println(testCola);
+		
+		System.out.println("\nDesencolando elementos");
+		System.out.println(testCola.remove());
+		
+		System.out.println("\nCola restante");
+		System.out.println(testCola);
 		
 		
 		System.out.println("\nEsta vacía?");
-		System.out.println(prueba.isEmpty());
+		System.out.println(testCola.isEmpty());
+		
+		try {
+			testCola.remove();
+		}catch(Exception e) {
+			System.out.println("\n" +e);
+		}
 
 	}
 

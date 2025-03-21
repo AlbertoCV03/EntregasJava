@@ -36,44 +36,44 @@ public class ListaOrdenada<E> extends AgregadoLineal<E>{
 	public void add(E e) {
 		this.elementos.add(indexOrder(e), e);
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println("----- Prueba de ListaOrdenada -----");
 		Comparator<Integer> comparador= Comparator.comparing(x->x);
-		ListaOrdenada<Integer> prueba= ListaOrdenada.of(comparador);
+		ListaOrdenada<Integer> testListaOrdenada= ListaOrdenada.of(comparador);
 		
 		System.out.println("\nAñadiendo elementos");
-		prueba.add(5);
-		System.out.println(prueba.elements());
-		prueba.add(2);
-		System.out.println(prueba.elements());
-		prueba.add(8);
-		System.out.println(prueba.elements());
-		prueba.add(1);
-		System.out.println(prueba.elements());
-		prueba.add(3);
-		System.out.println(prueba.elements());
+		testListaOrdenada.add(5);
+		System.out.println(testListaOrdenada);
+		testListaOrdenada.add(2);
+		System.out.println(testListaOrdenada);
+		testListaOrdenada.add(8);
+		System.out.println(testListaOrdenada);
+		testListaOrdenada.add(1);
+		System.out.println(testListaOrdenada);
+		testListaOrdenada.add(3);
+		System.out.println(testListaOrdenada);
 		
 		System.out.println("\nTamaño de la lista");
-		System.out.println(prueba.size());
+		System.out.println(testListaOrdenada.size());
 		
 		System.out.println("\nEliminando el primer elemento");
-		System.out.println(prueba.remove());
+		System.out.println(testListaOrdenada.remove());
 		
 		System.out.println("\nElementos después de eliminar");
-		System.out.println(prueba.elements());
+		System.out.println(testListaOrdenada);
 		
 		System.out.println("\nAñadiendo elementos en lote");
 		
-		prueba.addAll(List.of(4,5,6));
-		System.out.println(prueba.elements());
+		testListaOrdenada.addAll(List.of(4,5,6));
+		System.out.println(testListaOrdenada);
 		
 		System.out.println("\nEliminando todos los elementos");
-		List<Integer> b= prueba.removeAll();
+		List<Integer> b= testListaOrdenada.removeAll();
 		System.out.println(b);
 		
 		System.out.println("\nEsta vacía?");
-		System.out.println(prueba.isEmpty());
+		System.out.println(testListaOrdenada.isEmpty());
 
 	}
 

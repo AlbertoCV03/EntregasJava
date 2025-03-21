@@ -16,12 +16,16 @@ public abstract class AgregadoLineal<E> {
     	return elementos;
     }
     public abstract void add(E e);
+    
     public void addAll(List<E> list) {
     	for(E e : list) {
     		this.add(e);
     	}
     }
     public E remove() {
+    	if(this.isEmpty()) {
+    		throw new IllegalArgumentException("El agregado esta vacío");
+    	}
     	return elementos.removeFirst();
     }
     public List<E> removeAll(){
@@ -30,5 +34,11 @@ public abstract class AgregadoLineal<E> {
     	
     	return eliminados;
     }
+    
+	@Override
+	public String toString() {
+		return elementos.toString();
+	}
+    
 
 }
