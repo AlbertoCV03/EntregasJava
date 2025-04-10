@@ -46,7 +46,7 @@ public class EstadisticasClientes {
 		Compra c6 = Compra.of(luis, "Poster gigante", 85.0);
 
 		System.out.println(EstadisticasClientes.agruparComprasPorClienteF(List.of(c1,c2,c3,c4,c5,c6)));
-		System.out.println(EstadisticasClientes.agruparComprasPorClienteF(List.of(c1,c2,c3,c4,c5,c6)));
+		System.out.println(EstadisticasClientes.agruparComprasPorClienteI(List.of(c1,c2,c3,c4,c5,c6)));
 	}
 
 }

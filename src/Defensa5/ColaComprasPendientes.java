@@ -50,7 +50,7 @@ public class ColaComprasPendientes<E> extends Cola<Compra> {
 		a.addAll(List.of(c1,c2,c3,c4,c5,c6));
 		System.out.println(a);
 		System.out.println(a.buscarCompraPorDescripcion("Agenda personalizada"));
-		System.out.println(a.buscarCompraPorDescripcion("Agendapersonalizada"));
+		System.out.println(a.buscarCompraPorDescripcion("Cuaderno"));
 		System.out.println(a.filtrarPorClienteYProducto(luis, "Poster gigante"));
 
 	}
