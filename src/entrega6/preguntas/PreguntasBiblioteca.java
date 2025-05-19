@@ -112,8 +112,8 @@ public class PreguntasBiblioteca {
 	}
 	
 	public static void main(String[] args) {
-//		System.out.println(masVecesPrestadoImperativo());
-//		System.out.println(masVecesPrestadoFuncional());
+		System.out.println(masVecesPrestadoImperativo());
+		System.out.println(masVecesPrestadoFuncional());
 		
 		Libros libros= Libros.of();
 		List<String> nombres= new ArrayList<>();

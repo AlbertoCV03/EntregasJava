@@ -468,9 +468,28 @@ public class PreguntasCentro {
 		
 		System.out.println(rangosEdadPorAlumnoImperativo("23-24"));
 		System.out.println(rangosEdadPorAlumnoFuncional("23-24"));
-		//System.out.println(rangosEdadPorAlumnoImperativo(""));
-		//System.out.println(rangosEdadPorAlumnoImperativo("23+24;23+24"));
-		//System.out.println(rangosEdadPorAlumnoImperativo("23-24,23-24"));
+		
+		try {
+			System.out.println(rangosEdadPorAlumnoImperativo(""));
+		}catch(Exception e) {
+			
+			System.out.println(e);
+		}
+		
+		try {
+			System.out.println(rangosEdadPorAlumnoImperativo("23+24;23+24"));
+		}catch(Exception e) {
+			
+			System.out.println(e);
+		}
+		
+		try {
+			System.out.println(rangosEdadPorAlumnoImperativo("23-24,23-24"));
+		}catch(Exception e) {
+			
+			System.out.println(e);
+		}
+		
 		
 		System.out.println(nombreProfesorMasGruposImperativo(27,28));
 		System.out.println(nombreProfesorMasGruposFuncional(27,28));
@@ -478,6 +497,11 @@ public class PreguntasCentro {
 		
 		System.out.println(nombresAlumnosMayorNotaImperativo(10,LocalDateTime.of(2000, 4, 16, 0, 0).toLocalDate()));
 		System.out.println(nombresAlumnosMayorNotaFuncional(10,LocalDateTime.of(2000, 4, 16, 0, 0).toLocalDate()));
+		
+		
+		
+
+		
 	}
 
 }

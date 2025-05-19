@@ -64,6 +64,19 @@ public class PreguntasBancos {
 	}
 	
 	public static Map<String,Double> valorTotalPrestamosFuncional(Integer e, Double a, Double b, LocalDate f) {
+		
+		if (e<=18) {
+			throw new IllegalArgumentException(String.format("La edad %d debe ser superior a 18 años", e));
+		}
+		
+		if (a<=0 || b<=0) {
+			throw new IllegalArgumentException(String.format("%.2f y %.2f deben ser positivos", a,b));
+		}
+		
+		if (a > b) {
+			throw new IllegalArgumentException(String.format("%.2f debe ser menor que %.2f", a,b));
+		}
+		
 		Banco banco= Banco.of();
 		
 		Map<String, Double> res = banco.personas().todos().stream()
@@ -85,6 +98,55 @@ public class PreguntasBancos {
 		System.out.println(valorTotalPrestamosImperativo(100,1.,100000.,LocalDate.of(1900, 5, 15)));
 		
 		System.out.println(valorTotalPrestamosFuncional(100,1.,100000.,LocalDate.of(1900, 5, 15)));
+		
+		try {
+			System.out.println(valorTotalPrestamosImperativo(15,1.,100000.,LocalDate.of(1900, 5, 15)));
+			
+		}catch(Exception e){
+			
+			System.out.println(e);
+		}
+		
+		try {
+			System.out.println(valorTotalPrestamosImperativo(19,-1.,100000.,LocalDate.of(1900, 5, 15)));
+			
+		}catch(Exception e){
+			
+			System.out.println(e);
+		}
+		
+		try {
+			System.out.println(valorTotalPrestamosImperativo(19,11000.,100.,LocalDate.of(1900, 5, 15)));
+			
+		}catch(Exception e){
+			
+			System.out.println(e);
+		}
+		
+		
+		try {
+			System.out.println(valorTotalPrestamosFuncional(15,1.,100000.,LocalDate.of(1900, 5, 15)));
+			
+		}catch(Exception e){
+			
+			System.out.println(e);
+		}
+		
+		try {
+			System.out.println(valorTotalPrestamosFuncional(19,-1.,100000.,LocalDate.of(1900, 5, 15)));
+			
+		}catch(Exception e){
+			
+			System.out.println(e);
+		}
+		
+		try {
+			System.out.println(valorTotalPrestamosFuncional(19,11000.,100.,LocalDate.of(1900, 5, 15)));
+			
+		}catch(Exception e){
+			
+			System.out.println(e);
+		}
 	}
 
 }

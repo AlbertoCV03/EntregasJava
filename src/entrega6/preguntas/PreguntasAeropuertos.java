@@ -23,7 +23,7 @@ public class PreguntasAeropuertos {
 		}
 		
 		if(!(ChronoUnit.DAYS.between(a.toLocalDate(), b.toLocalDate())>1)) {
-			throw new IllegalArgumentException("Debe haber almenos 1 dia de diferencia entre ambas fechas");
+			throw new IllegalArgumentException("Debe haber más de 1 día de diferencia entre ambas fechas");
 		}
 		
 		Double contG= 0.;
@@ -63,7 +63,7 @@ public class PreguntasAeropuertos {
 		LocalDateTime bFinal = a.isBefore(b) ? b : a;
 
 	    if (ChronoUnit.DAYS.between(a.toLocalDate(), b.toLocalDate()) <= 1) {
-	        throw new IllegalArgumentException("Debe haber al menos 1 día de diferencia entre ambas fechas");
+	        throw new IllegalArgumentException("Debe haber más de 1 día de diferencia entre ambas fechas");
 	    }
 
 	    EspacioAereo espacio = EspacioAereo.of();
@@ -95,5 +95,23 @@ public class PreguntasAeropuertos {
 		
 		System.out.println(ciudadAeropuertoMayorFacturacionImperativo(a,b));
 		System.out.println(ciudadAeropuertoMayorFacturacionFuncional(a,b));
+		
+		try {
+			LocalDateTime a1= LocalDateTime.of(2000, 5, 12, 0, 0);
+			LocalDateTime b1= LocalDateTime.of(2000, 5, 13, 0, 0);
+			System.out.println(ciudadAeropuertoMayorFacturacionImperativo(a1,b1));
+		}catch(Exception e){
+			
+			System.out.println(e);
+		}
+		
+		try {
+			LocalDateTime a1= LocalDateTime.of(2000, 5, 12, 0, 0);
+			LocalDateTime b1= LocalDateTime.of(2000, 5, 13, 0, 0);
+			System.out.println(ciudadAeropuertoMayorFacturacionFuncional(a1,b1));
+		}catch(Exception e){
+			
+			System.out.println(e);
+		}
 	}
 }
